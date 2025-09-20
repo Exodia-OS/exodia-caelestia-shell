@@ -5,7 +5,7 @@
 pkgname='exodia-caelestia-shell'
 _pkgname='caelestia-shell'
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('any')
 url='https://github.com/mmsaeed509/exodia-caelestia-shell'
