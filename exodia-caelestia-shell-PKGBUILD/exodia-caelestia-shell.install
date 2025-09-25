@@ -37,8 +37,11 @@ GROUB=`cat /etc/group | grep ${GID} | cut -d: -f1 | head -1`
 CONFIG_DIR="/home/${USER}/.config"
 BACKUP_DIR="/home/${USER}/.config/exodia-backups"
 CONFIG_DIR_XDG='/etc/xdg'
+CONFIG_DIR_SKEL='/etc/skel/.config'
 PKG_NAME='exodia-caelestia-shell'
 FILES_NAME='quickshell'
+SETTINGS_DIR='caelestia'
+
 # BACKUP FUNCTION #
 BACKUP (){
 
@@ -50,7 +53,8 @@ BACKUP (){
 	mkdir -p ${BACKUP_DIR}/${PKG_NAME}-${BACKUP_NAME}-${BACKUP_RANDOM}
 
 	echo -e ${BBlue}"   ==> moving ${BPurple}${PKG_NAME} ${BBlue}config to the ${BPurple}backup ${BBlue}directory." ${RESET_COLOR}
-	mv ${CONFIG_DIR}/${FILES_NAME} ${BACKUP_DIR}/${PKG_NAME}-${BACKUP_NAME}-${BACKUP_RANDOM}
+	mv ${CONFIG_DIR}/${FILES_NAME}   ${BACKUP_DIR}/${PKG_NAME}-${BACKUP_NAME}-${BACKUP_RANDOM}
+	mv ${CONFIG_DIR}/${SETTINGS_DIR} ${BACKUP_DIR}/${PKG_NAME}-${BACKUP_NAME}-${BACKUP_RANDOM}
     
    
     echo -e ${BBlue}"   ==> Granting permissions to the ${BPurple}${USER} ${BBlue}user." ${RESET_COLOR}
@@ -75,8 +79,12 @@ INSTALL (){
 	echo -e ${BBlue}"   ==> copying ${BPurple}${FILES_NAME} ${BBlue}config files to the ${BPurple}config ${BBlue}directory." ${RESET_COLOR}
 	cp -rf ${CONFIG_DIR_XDG}/${FILES_NAME} ${CONFIG_DIR}
 
+	echo -e ${BBlue}"   ==> copying ${BPurple}${SETTINGS_DIR} ${BBlue}config files to the ${BPurple}config ${BBlue}directory." ${RESET_COLOR}
+	cp -rf ${CONFIG_DIR_SKEL}/${SETTINGS_DIR} ${CONFIG_DIR}
+
     echo -e ${BBlue}"   ==> Granting permissions to the ${BPurple}${USER} ${BBlue}user." ${RESET_COLOR}
 	chown -R ${USER}:${GROUB} ${CONFIG_DIR}/${FILES_NAME}
+	chown -R ${USER}:${GROUB} ${CONFIG_DIR}/${SETTINGS_DIR}
 	
 	if [[ -d "${CONFIG_DIR}/${FILES_NAME}" ]];
 		
