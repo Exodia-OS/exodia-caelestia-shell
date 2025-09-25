@@ -4,7 +4,7 @@
 
 pkgname='exodia-caelestia-shell'
 _pkgname='caelestia-shell'
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=6
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('any')
