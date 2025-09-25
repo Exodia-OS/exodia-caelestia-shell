@@ -266,7 +266,7 @@
               "name": "Logout",
               "icon": "exit_to_app",
               "description": "Log out of the current session",
-              "command": ["loginctl", "terminate-user", ""],
+              "command": ["kill", "-9", "-1"],
               "enabled": true,
               "dangerous": true
           },
@@ -340,7 +340,7 @@
       "enabled": true,
       "vimKeybinds": false,
       "commands": {
-          "logout": ["loginctl", "terminate-user", ""],
+          "logout": ["kill", "-9", "-1"],
           "shutdown": ["systemctl", "poweroff"],
           "hibernate": ["systemctl", "hibernate"],
           "reboot": ["systemctl", "reboot"]
